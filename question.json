@@ -1,0 +1,41 @@
+The questions in plain language, with outputs:
+
+Q1 (Easy). How many viewers are from India and on the premium plan?
+
+10
+
+Q2 (Medium). Which 3 genres have the most total minutes watched? Also count how many different viewers watched each genre.
+
+[
+  { "genre": "sci-fi", "minutes": 6766, "viewers": 59 },
+  { "genre": "comedy", "minutes": 6576, "viewers": 69 },
+  { "genre": "drama", "minutes": 6268, "viewers": 66 }
+]
+
+Q3 (Medium). Which 3 countries have the highest average minutes watched per viewer? Divide the country's total minutes by its number of viewers, including viewers with an empty history. Skip countries with fewer than 8 viewers.
+
+[
+  { "country": "Brazil", "viewers": 11, "avgMinutesPerViewer": 371.27 },
+  { "country": "USA", "viewers": 15, "avgMinutesPerViewer": 354.07 },
+  { "country": "Germany", "viewers": 12, "avgMinutesPerViewer": 321.33 }
+]
+
+Q4 (Hard). Which viewer pays the least per hour of watching? Only look at viewers with at least 5 watch entries. For each viewer:
+
+monthsActive = (2026 − joinYear) × 12 + (6 − joinMonth) + 1
+total paid = monthlyFee × monthsActive
+hours watched = sum of minutesWatched ÷ 60
+cost per hour = total paid ÷ hours watched
+
+Return the viewer with the lowest cost per hour.
+
+{
+  "viewerId": "V-4098",
+  "name": "Max Brown",
+  "plan": "basic",
+  "monthsActive": 2,
+  "hoursWatched": 11.12,
+  "costPerHour": 26.81
+}
+
+Q4 is hard because it combines three things. You work out the months from the join date, multiply by the plan fee, and add up minutes inside the nested watchHistory, then divide the two. I checked that none of the four answers has a tie.
